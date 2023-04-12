@@ -5,7 +5,15 @@ const nextConfig = {
     domains: [
       "source.unsplash.com",
       "www.notion.so",
+      "notion-yosuk.s3.amazonaws.com",
       "s3.us-west-2.amazonaws.com",
+      "*",
+    ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
     ],
   },
 };

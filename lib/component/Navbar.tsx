@@ -1,20 +1,26 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const Navbar = () => {
   return (
-    <header className="flex flex-wrap sm:justify-start sm:flex-col z-50 w-full bg-transparent text-sm pb-2 sm:pb-0 fixed">
+    <header className="flex flex-wrap sm:justify-start sm:flex-col z-50 w-full bg-transparent text-sm pb-2 sm:pb-0 top-0 absolute backdrop-blur-sm">
       <nav
         className="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex items-center justify-between">
-          <a
-            className="flex-none text-xl font-semibold"
-            href="#"
+          <Link
+            className="flex-none text-xl w-30 md:w-50 font-semibold"
+            href="/"
             aria-label="Brand"
           >
-            <Image src="/alcowell_toolbox.svg" width={200} height={200} />
-          </a>
+            <Image
+              src="/alcowell_toolbox.svg"
+              width={200}
+              height={200}
+              alt="alcowell_toolbox"
+            />
+          </Link>
           <div className="sm:hidden">
             <button
               type="button"
@@ -52,27 +58,27 @@ export const Navbar = () => {
           className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
         >
           <div className="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:pl-7">
-            <a
-              className="font-medium sm:py-6 text-white"
-              href="#"
+            <Link
+              className="font-medium sm:py-2 text-white"
+              href="/"
               aria-current="page"
             >
               Home
-            </a>
+            </Link>
             <a
-              className="font-medium text-white hover:text-gray-500 sm:py-6  "
+              className="font-medium text-white hover:text-gray-500 sm:py-2  "
               href="#"
             >
               About
             </a>
             <a
-              className="font-medium text-white hover:text-gray-500 sm:py-6  "
+              className="font-medium text-white hover:text-gray-500 sm:py-2  "
               href="#"
             >
               Tech
             </a>
             <a
-              className="font-medium text-white hover:text-gray-500 sm:py-6  "
+              className="font-medium text-white hover:text-gray-500 sm:py-2  "
               href="#"
             >
               Diary
@@ -81,11 +87,11 @@ export const Navbar = () => {
             <div className="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none] sm:[--trigger:hover] sm:py-4">
               <button
                 type="button"
-                className="flex items-center w-full text-gray-800 hover:text-gray-500 font-medium  "
+                className="flex items-center w-full text-white hover:text-white font-medium  "
               >
                 Dropdown
                 <svg
-                  className="ml-2 w-2.5 h-2.5 text-gray-600"
+                  className="ml-2 w-2.5 h-2.5 text-white"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -95,8 +101,8 @@ export const Navbar = () => {
                   <path
                     d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                   ></path>
                 </svg>
               </button>

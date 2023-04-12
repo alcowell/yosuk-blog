@@ -4,9 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mplus: ["M PLUS 1p"],
-        roboto: ["Roboto"],
-        rubik: ["Rubik Pixels"],
+        noto: ["Noto Sans JP", "sans-serif"],
       },
     },
     backgroundImage: (theme) => ({

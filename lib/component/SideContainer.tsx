@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AiFillFacebook, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { AiFillFacebook, AiFillGithub, AiFillInstagram } from "react-icons/ai";
 
 export const SideContainer2 = () => {
   return (
@@ -13,7 +13,7 @@ export const SideContainer2 = () => {
           height={100}
         />
         <span className="flex flex-col flex-grow pl-3">
-          <h2 className="text-2xl font-semibold tracking-widest text-gray-600 uppercase">
+          <h2 className="md:text-2xl text-lg font-semibold tracking-widest text-gray-600 uppercase">
             Yosuke Sakai
           </h2>
         </span>
@@ -22,15 +22,18 @@ export const SideContainer2 = () => {
         <a className="text-gray-700 hover:text-neutral-600">
           <AiFillFacebook size={50} />
         </a>
-        <a className="ml-3 text-gray-700 hover:text-neutral-600">
+        <a
+          className="ml-3 text-gray-700 hover:text-neutral-600"
+          href="https://github.com/alcowell"
+        >
           <AiFillGithub size={50} />
         </a>
-        <a className="ml-3 text-gray-700 hover:text-neutral-600">
-          <AiFillLinkedin size={50} />
+        <a className="ml-3 text-gray-700 hover:text-neutral-600" href="">
+          <AiFillInstagram size={50} />
         </a>
         <a className="ml-3 text-blue-500 hover:text-neutral-600"></a>
       </span>
-      <p className="mx-auto mt-6 text-base leading-relaxed text-gray-500 text-xl">
+      <p className="mx-auto mt-6 md:text-base leading-relaxed text-gray-500 text-lg">
         I am highly motivated engineer with 3 years experience in Software and
         infrastructure development.
       </p>
