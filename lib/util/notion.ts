@@ -287,14 +287,48 @@ export async function getPosts(databaseId: string): Promise<Post[]> {
   }
 }
 
-export async function getPostById(post_id: string): Promise<Post> {
+export async function getPostById(postId: string): Promise<Post> {
   try {
-    const response = await client.pages.retrieve({ page_id: post_id });
+    const response = await client.pages.retrieve({ page_id: postId });
     if (_isPageObject(response)) {
       return _buildPost(response);
     } else {
-      throw new Error(`Cannot get post ${post_id}`);
+      throw new Error(`Cannot get post ${postId}`);
     }
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+    throw error;
+  }
+}
+
+export async function getPostsByTagId(
+  databaseId: string,
+  tagId: string
+): Promise<Post[]> {
+  try {
+    const response = await client.databases.query({
+      database_id: databaseId,
+      filter: {
+        and: [
+          {
+            property: "tags",
+            multi_select: {
+              contains: "技術",
+            },
+          },
+        ],
+      },
+    });
+    console.log(tagId);
+    console.log(response);
+    const pageObjects = response.results.filter((pageObject) =>
+      _isPageObject(pageObject)
+    ) as PageObjectResponse[];
+    return pageObjects
+      .filter((pageObject) => _validPageObject(pageObject))
+      .map((pageObject) => _buildPost(pageObject));
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error(error.message);
@@ -328,3 +362,35 @@ export const isExpired = (block: Block): boolean => {
   }
   return false;
 };
+
+function _isValidTag(tag: any): tag is Tag {
+  return "id" in tag && typeof tag.id == "string" && tag.id.length > 0;
+}
+
+function _getTagIdsFromPost(post: Post): string[] {
+  return post.tags.filter(_isValidTag).map((tag) => tag.id);
+}
+
+export async function getTagIds(databaseId: string): Promise<string[]> {
+  let tagIds: string[] = [];
+  try {
+    const response = await client.databases.query({
+      database_id: databaseId,
+    });
+    const pageObjects = response.results.filter((pageObject) =>
+      _isPageObject(pageObject)
+    ) as PageObjectResponse[];
+    pageObjects
+      .filter((pageObject) => _validPageObject(pageObject))
+      .map((pageObject) => _buildPost(pageObject))
+      .map((post) => {
+        tagIds = [...tagIds, ..._getTagIdsFromPost(post)];
+      });
+    return tagIds;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+    throw error;
+  }
+}

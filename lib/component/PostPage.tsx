@@ -41,14 +41,15 @@ const PostPage: React.FunctionComponent<{ post: Post }> = ({ post }) => {
           </p>
           {post.tags.map((tag, i) => {
             return (
-              <span
-                className={
-                  "inline-block bg-gray-200 rounded-full px-3 py-1 md:text-sm text-xs font-semibold text-gray-700 mr-2 mb-2 mt-2 md:mt-4"
-                }
-                key={i}
-              >
-                #{tag.name}
-              </span>
+              <a href={`/tag/${tag.id}`} key={i}>
+                <span
+                  className={
+                    "inline-block bg-gray-200 rounded-full px-3 py-1 md:text-sm text-xs font-semibold text-gray-700 mr-2 mb-2 mt-2 md:mt-4 hover:opacity-80"
+                  }
+                >
+                  #{tag.name}
+                </span>
+              </a>
             );
           })}
         </div>
