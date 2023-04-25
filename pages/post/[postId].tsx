@@ -2,15 +2,10 @@ import { Layout } from "@/lib/component/Layout";
 import PostBlock from "@/lib/component/PostBlock";
 import { Block, Post } from "@/lib/interface";
 import { getAllBlocksById, getPostById, getPosts } from "@/lib/util/notion";
+import { wrapBlocks } from "@/lib/util/utils";
 import { error } from "console";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import Error from "next/error";
-import Prism from "prismjs";
-import { useEffect } from "react";
-
-type pathParams = {
-  postId: string;
-};
 
 type blocksProps = {
   blocks: Block[];
@@ -46,7 +41,7 @@ export const getStaticProps: GetStaticProps<blocksProps> = async ({
     const post = await getPostById(postId);
     return {
       props: {
-        blocks: allBlocks,
+        blocks: wrapBlocks(allBlocks),
         post: post,
       },
     };
@@ -59,9 +54,6 @@ const Index = ({
   blocks,
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  useEffect(() => {
-    Prism.highlightAll();
-  });
   if (post === undefined) {
     return <Error statusCode={500} />;
   }
@@ -70,9 +62,9 @@ const Index = ({
       <div className="px-4 pt-3 lg:pt-7 pb-4 sm:px-6 lg:px-8 mx-auto">
         <div className="space-y-5 md:space-y-8">
           <div className="space-y-3">
-            {blocks.map((block, i) => (
-              <PostBlock block={block} key={i} />
-            ))}
+            {blocks.map((block, i) => {
+              return <PostBlock block={block} key={i} />;
+            })}
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import {
   Block,
   Bookmark,
   BookmarkOgp,
+  BulletedListItem,
   Code,
   Equation,
   External,
@@ -213,6 +214,14 @@ async function _buildBlock(
         ogp,
       };
       block.bookmark = bookmarkOgp;
+      break;
+    case "bulleted_list_item":
+      const bulletedListItem: BulletedListItem = {
+        color: blockObjectResponse.bulleted_list_item.color,
+        rich_text:
+          blockObjectResponse.bulleted_list_item.rich_text.map(_buildRichText),
+      };
+      block.bulleted_list_item = bulletedListItem;
       break;
   }
   return block;
