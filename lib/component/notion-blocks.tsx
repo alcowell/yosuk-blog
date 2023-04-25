@@ -9,13 +9,19 @@ export const RichTextContent = ({
   richText,
   className,
   language,
+  isList = false,
 }: {
   richText: RichText;
   className: string;
   language?: string;
+  isList?: boolean;
 }) => {
   let element;
   if (richText.type == "text") {
+    if (richText.href) {
+      className = className.replace(/text-gray-800/g, "");
+      className += " font-medium text-blue-600 hover:underline";
+    }
     element = <p className={className}>{richText.text?.content}</p>;
   } else if (richText.type == "equation") {
     element = <p className={className}>{richText.equation?.expression}</p>;
@@ -54,8 +60,8 @@ export const RichTextContent = ({
 };
 
 export const Heading1 = ({ block }: { block: Block }) => {
-  const className =
-    "md:text-4xl text-2xl font-noto text-gray-800 font-bold md:py-2 py-1";
+  let className =
+    "md:text-4xl text-2xl font-noto text-gray-800 font-bold md:pt-5 pt-3 pb-3 md:pb-2";
   return (
     <>
       {block.heading_1?.rich_text.map((rich_text: RichText, i: number) => (
@@ -66,7 +72,7 @@ export const Heading1 = ({ block }: { block: Block }) => {
 };
 
 export const Heading2 = ({ block }: { block: Block }) => {
-  const className = "md:text-3xl text-xl font-noto font-bold";
+  let className = "md:text-3xl text-xl font-noto font-bold";
   return (
     <>
       {block.heading_2?.rich_text.map((rich_text: RichText, i: number) => (
@@ -77,7 +83,7 @@ export const Heading2 = ({ block }: { block: Block }) => {
 };
 
 export const Heading3 = ({ block }: { block: Block }) => {
-  const className = "md:text-2xl text-lg font-noto font-bold";
+  let className = "md:text-2xl text-lg font-noto font-bold";
   return (
     <>
       {block.heading_3?.rich_text.map((rich_text: RichText, i: number) => (
@@ -88,14 +94,14 @@ export const Heading3 = ({ block }: { block: Block }) => {
 };
 
 export const Paragraph = ({ block }: { block: Block }) => {
-  const className =
-    "md:text-xl text-base font-noto text-gray-800 leading-relaxed md:leading-relaxed";
+  let className =
+    "md:text-xl text-base font-noto text-gray-800 leading-relaxed md:leading-relaxed inline";
   return (
-    <>
+    <div className="pt-2">
       {block.paragraph?.rich_text.map((rich_text: RichText, i: number) => (
         <RichTextContent className={className} key={i} richText={rich_text} />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -123,8 +129,7 @@ export const ImageBlock = ({ initialBlock }: { initialBlock: Block }) => {
 };
 
 export const Quote = ({ block }: { block: Block }) => {
-  const className =
-    "md:text-xl italic font-medium leading-relaxed text-gray-700";
+  let className = "md:text-xl italic font-medium leading-relaxed text-gray-700";
   return (
     <blockquote className="p-4 my-4 border-l-4 border-gray-300 bg-gray-50">
       {block.quote?.rich_text.map((rich_text: RichText, i: number) => (
@@ -161,7 +166,7 @@ export const Bookmark = ({ block }: { block: Block }) => {
   const ogpDescription = block.bookmark?.ogp.description;
   return (
     <a href={block.bookmark?.bookmark.url}>
-      <div className="grid h-auto grid-cols-3 border bg-white shadow-sm mt-2">
+      <div className="grid h-auto grid-cols-3 border bg-white shadow-sm my-4">
         <div className="col-span-2 w-10/12 flex flex-none overflow-hidden truncate">
           <div className="flex flex-col p-2">
             <p className="text-sm font-bold text-gray-800 md:text-lg">
@@ -177,7 +182,7 @@ export const Bookmark = ({ block }: { block: Block }) => {
             </div>
           </div>
         </div>
-        <div className="relative col-span-1 flex-shrink-0 overflow-hidden rounded-t-xl px-1">
+        <div className="relative col-span-1 flex-shrink-0 overflow-hidden px-1">
           {ogpImage !== "" && ogpImage !== undefined ? (
             <Image
               className="absolute top-0 h-full w-full object-cover"
@@ -191,5 +196,28 @@ export const Bookmark = ({ block }: { block: Block }) => {
         </div>
       </div>
     </a>
+  );
+};
+
+export const BulletedList = ({ block }: { block: Block }) => {
+  const className =
+    "md:text-xl text-base font-noto text-gray-800 leading-relaxed md:leading-relaxed inline";
+
+  return (
+    <ul className="list-disc list-inside text-gray-900">
+      {block.bulleted_list_item?.rich_text.map(
+        (rich_text: RichText, i: number) => {
+          if (rich_text.plain_text !== " ") {
+            return (
+              <li key={i}>
+                <RichTextContent className={className} richText={rich_text} />
+              </li>
+            );
+          } else {
+            return <></>;
+          }
+        }
+      )}
+    </ul>
   );
 };

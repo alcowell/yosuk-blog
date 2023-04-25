@@ -14,6 +14,7 @@ export interface Block {
   code?: Code;
   bookmark?: BookmarkOgp;
   image?: Image;
+  bulleted_list_item?: BulletedListItem;
 }
 
 export interface BookmarkOgp {
@@ -84,6 +85,12 @@ export interface Annotation {
 }
 
 export interface Paragraph {
+  rich_text: RichText[];
+  color: string;
+  children?: Block;
+}
+
+export interface BulletedListItem {
   rich_text: RichText[];
   color: string;
   children?: Block;

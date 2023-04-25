@@ -1,6 +1,7 @@
 import { Block } from "../interface";
 import {
   Bookmark,
+  BulletedList,
   Code,
   Heading1,
   Heading2,
@@ -28,6 +29,8 @@ const PostBlock = ({ block }: { block: Block }) => {
       return <Code block={block} />;
     case "bookmark":
       return <Bookmark block={block} />;
+    case "bulleted_list_item":
+      return <BulletedList block={block} />;
   }
   return <h2>{block.type}</h2>;
 };
