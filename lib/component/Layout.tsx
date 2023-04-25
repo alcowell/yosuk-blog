@@ -26,7 +26,7 @@ export const Layout = ({
               style={{ objectFit: "cover", opacity: 0.6 }}
               alt="background"
             />
-            <h1 className="absolute text-3xl md:text-6xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-noto">
+            <h1 className="absolute text-2xl md:text-5xl 2xl:text-6xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-noto">
               {title}
             </h1>
           </div>
