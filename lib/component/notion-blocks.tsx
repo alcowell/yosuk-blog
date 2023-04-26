@@ -2,7 +2,7 @@ import Image from "next/image";
 import Prism from "prismjs";
 import { useEffect } from "react";
 import useSWR from "swr";
-import { Block, RichText } from "../interface";
+import { Block, BulletedListItem, RichText } from "../interface";
 import { fetchBlock, isExpired } from "../util/notion";
 
 export const RichTextContent = ({
@@ -205,17 +205,21 @@ export const BulletedList = ({ block }: { block: Block }) => {
 
   return (
     <ul className="list-disc list-inside text-gray-900">
-      {block.bulleted_list_item?.rich_text.map(
-        (rich_text: RichText, i: number) => {
-          if (rich_text.plain_text !== " ") {
-            return (
-              <li key={i}>
-                <RichTextContent className={className} richText={rich_text} />
-              </li>
-            );
-          } else {
-            return <></>;
-          }
+      {block.list?.listItems.map(
+        (bulletedList: BulletedListItem, i: number) => {
+          return (
+            <li key={i} className="gap-x-1">
+              {bulletedList.rich_text.map((richText: RichText, k: number) => {
+                return (
+                  <RichTextContent
+                    className={className}
+                    richText={richText}
+                    key={k}
+                  />
+                );
+              })}
+            </li>
+          );
         }
       )}
     </ul>

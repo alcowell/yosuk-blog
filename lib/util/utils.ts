@@ -1,29 +1,35 @@
-import { Block } from "../interface";
+import { Block, List } from "../interface";
 
 export function wrapBlocks(blocks: Block[]): Block[] {
   return blocks.reduce((arr, block: Block, i: number) => {
-    const isBulletedItem = block.type === "bulleted_list_item";
-    if (!isBulletedItem) {
-      return arr.concat(block);
-    } else {
-      if (i !== 0) {
-        let prevBlock = arr[arr.length - 1];
-        if (
-          prevBlock.type === "bulleted_list_item" &&
-          block.bulleted_list_item?.rich_text !== undefined
-        ) {
-          block.bulleted_list_item?.rich_text.map((object) => {
-            if (object.plain_text) {
-              prevBlock?.bulleted_list_item?.rich_text.push(object);
-            }
-          });
-          return arr;
-        } else {
-          return arr.concat(block);
-        }
-      } else {
+    if (block?.bulleted_list_item !== undefined) {
+      if (i === 0) {
+        const list: List = {
+          type: "bulleted_list_item",
+          listItems: [block.bulleted_list_item],
+        };
+        block.list = list;
         return arr.concat(block);
       }
+
+      const prevBlock = arr[arr.length - 1];
+
+      if (prevBlock.type !== "bulleted_list_item") {
+        const list: List = {
+          type: "bulleted_list_item",
+          listItems: [block.bulleted_list_item],
+        };
+        block.list = list;
+        return arr.concat(block);
+      }
+
+      if (prevBlock?.list !== undefined) {
+        prevBlock.list.listItems.push(block.bulleted_list_item);
+      }
+
+      return arr;
+    } else {
+      return arr.concat(block);
     }
   }, [] as Block[]);
 }
