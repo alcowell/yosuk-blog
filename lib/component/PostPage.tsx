@@ -36,14 +36,14 @@ const PostPage: React.FunctionComponent<{ post: Post }> = ({ post }) => {
               {post.title}
             </a>
           </p>
-          <p className="md:mt-2 mt-1 md:text-xl text-sm text-gray-500 mt-3 font-noto">
+          <p className="md:mt-2 mt-1 md:text-xl text-sm text-gray-500 mt-2 font-noto">
             {post.summary}
           </p>
           {post.tags.map((tag, i) => {
             return (
               <span
                 className={
-                  "inline-block bg-gray-200 rounded-full px-3 py-1 md:text-sm text-xs font-semibold text-gray-700 mr-2 mb-2 mt-2 md:mt-4"
+                  "inline-block bg-gray-200 rounded-full px-3 py-1 md:text-sm text-xs font-semibold text-gray-700 mr-2 mb-2 mt-4"
                 }
                 key={i}
               >
