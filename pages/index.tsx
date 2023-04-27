@@ -4,10 +4,6 @@ import { Post } from "@/lib/interface";
 import { getPosts } from "@/lib/util/notion";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-type SSG = {
-  message: string;
-};
-
 export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
   try {
     // const database = await getDatabaseData("7c948cdaef8b42138f248995ecd5e275");
