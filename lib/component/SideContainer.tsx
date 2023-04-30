@@ -5,7 +5,7 @@ export const SideContainer2 = () => {
   return (
     <div className="flex flex-col w-full max-w-lg mb-12 text-left lg:mx-auto">
       <a className="inline-flex items-center w-full mb-4 h-50 w-50">
-        <Image
+        <img
           alt="blog"
           src="/Me.jpg"
           className="flex-shrink-0 object-cover object-center rounded-full"
