@@ -123,7 +123,7 @@ export const ImageBlock = ({ initialBlock }: { initialBlock: Block }) => {
   }
   return (
     <div className="justify-center items-center flex w-full">
-      <Image src={url} width={200} height={200} alt="imageblock" />
+      <img src={url} width={200} height={200} alt="imageblock" />
     </div>
   );
 };

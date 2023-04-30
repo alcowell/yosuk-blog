@@ -21,7 +21,7 @@ export const Navbar = () => {
             href="/"
             aria-label="Brand"
           >
-            <Image
+            <img
               src="/alcowell_toolbox.svg"
               width={300}
               height={200}
@@ -63,9 +63,8 @@ export const Navbar = () => {
         </div>
         <div
           id="navbar-collapse-with-animation"
-          className={`ml-60 bg-white sm:bg-transparent shadow-sm hs-collapse transition-all ease-linear duration-300 basis-full grow sm:block ${
-            openMenu ? "" : "hidden"
-          }`}
+          className={`ml-60 bg-white sm:bg-transparent shadow-sm hs-collapse transition-all ease-linear duration-300 basis-full grow sm:block ${openMenu ? "" : "hidden"
+            }`}
         >
           <div className="flex flex-col mt-3 gap-y-4 gap-x-0 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:pl-7">
             <Link

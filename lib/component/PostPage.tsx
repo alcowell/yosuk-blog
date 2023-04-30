@@ -10,7 +10,7 @@ const PostPage: React.FunctionComponent<{ post: Post }> = ({ post }) => {
       <div className="md:pt-8 sm:flex lg:items-end group">
         <div className="mb-4 sm:mr-4">
           <a href={`/post/${post.id}`}>
-            <Image
+            <img
               className="rounded-md object-cover h-40 w-full md:h-40 md:w-40 hover:opacity-80"
               src={post.coverImageURL}
               style={{ objectFit: "cover", overflow: "hidden" }}

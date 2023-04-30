@@ -18,12 +18,10 @@ export const Layout = ({
       <Navbar />
       <div className="w-full overflow-hidden">
         <div className="min-h-screen">
-          <div className="w-screen h-48 md:h-64 w-full relative bg-black">
-            <Image
+          <div className="h-48 md:h-64 w-full relative overflow-hidden bg-black">
+            <img
+              className="object-cover opacity-60 w-full h-48 md:h-64"
               src={backgroundImage}
-              quality={100}
-              fill={true}
-              style={{ objectFit: "cover", opacity: 0.6 }}
               alt="background"
             />
             <h1 className="absolute text-2xl md:text-5xl 2xl:text-6xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-noto">

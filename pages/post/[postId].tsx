@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
           },
         };
       }),
-      fallback: true,
+      fallback: false,
     };
     return params;
   } catch (e) {
