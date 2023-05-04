@@ -9,23 +9,21 @@ export const RichTextContent = ({
   richText,
   className,
   language,
-  isList = false,
 }: {
   richText: RichText;
   className: string;
   language?: string;
-  isList?: boolean;
 }) => {
   if (richText.annotations.code) {
     if (language !== undefined) {
       return (
-        <pre className={`lang-${language} rounded-md`}>
+        <pre className={`lang-${language} rounded-md text-sm md:text-base`}>
           <code>{richText.text?.content}</code>
         </pre>
       );
     } else {
       return (
-        <pre className="inline bg-gray-200 p-1 font-semibold whitespace-pre-wrap">
+        <pre className="inline bg-gray-200 p-1 font-semibold whitespace-pre-wrap text-sm md:text-base">
           <code>{richText.text?.content}</code>
         </pre>
       );
