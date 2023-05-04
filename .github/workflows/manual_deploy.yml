@@ -1,0 +1,8 @@
+name: Manually deploy my-next-app on S3
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@
