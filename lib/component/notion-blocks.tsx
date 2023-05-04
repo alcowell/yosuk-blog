@@ -16,7 +16,24 @@ export const RichTextContent = ({
   language?: string;
   isList?: boolean;
 }) => {
+  if (richText.annotations.code) {
+    if (language !== undefined) {
+      return (
+        <pre className={`lang-${language} rounded-md`}>
+          <code>{richText.text?.content}</code>
+        </pre>
+      );
+    } else {
+      return (
+        <pre className="inline bg-gray-200 p-1 font-semibold whitespace-pre-wrap">
+          <code>{richText.text?.content}</code>
+        </pre>
+      );
+    }
+  }
+
   let element;
+
   if (richText.type == "text") {
     if (richText.href) {
       className = className.replace(/text-gray-800/g, "");
@@ -46,13 +63,7 @@ export const RichTextContent = ({
       <span className={`text-${richText.annotations.color}`}>{element}</span>
     );
   }
-  if (richText.annotations.code && language !== undefined) {
-    element = (
-      <pre className={`lang-${language} rounded-md`}>
-        <code>{element}</code>
-      </pre>
-    );
-  }
+
   if (richText.href) {
     element = <a href={richText.href}>{element}</a>;
   }
@@ -123,7 +134,7 @@ export const ImageBlock = ({ initialBlock }: { initialBlock: Block }) => {
   }
   return (
     <div className="justify-center items-center flex w-full">
-      <img src={url} width={200} height={200} alt="imageblock" />
+      <img src={url} className="object-cover" alt="imageblock" />
     </div>
   );
 };
@@ -148,14 +159,17 @@ export const Code = ({ block }: { block: Block }) => {
 
   return (
     <>
-      {block.code?.rich_text.map((rich_text: RichText, i: number) => (
-        <RichTextContent
-          className={className}
-          key={i}
-          richText={rich_text}
-          language={language}
-        />
-      ))}
+      {block.code?.rich_text.map((rich_text: RichText, i: number) => {
+        rich_text.annotations.code = true;
+        return (
+          <RichTextContent
+            className={className}
+            key={i}
+            richText={rich_text}
+            language={language}
+          />
+        );
+      })}
     </>
   );
 };

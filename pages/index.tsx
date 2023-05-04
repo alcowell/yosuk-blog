@@ -6,7 +6,6 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
   try {
-    // const database = await getDatabaseData("7c948cdaef8b42138f248995ecd5e275");
     const posts = await getPosts("7c948cdaef8b42138f248995ecd5e275");
     return {
       props: {
@@ -23,7 +22,6 @@ export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
 };
 
 const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const imageSrc: string = "https://source.unsplash.com/UOAvUQVNS60";
   const title = "日々のことと、技術のブログ";
   return (
     <Layout title={title} backgroundImage="/background.jpg">
