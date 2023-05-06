@@ -1,8 +1,7 @@
-import Image from "next/image";
-import { ReactNode } from "react";
-import { Footer } from "./Footer";
-import { Navbar } from "./Navbar";
-import { SideContainer2 } from "./SideContainer";
+import { ReactNode } from 'react';
+import { Footer } from './Footer';
+import { Navbar } from './Navbar';
+import { SideContainer2 } from './SideContainer';
 
 export const Layout = ({
   title,

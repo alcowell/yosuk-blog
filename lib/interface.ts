@@ -41,18 +41,18 @@ export interface Post {
 
 export type Content =
   | {
-      type: "paragraph" | "quote" | "heading_1" | "heading_2" | "heading_3";
+      type: 'paragraph' | 'quote' | 'heading_1' | 'heading_2' | 'heading_3';
       text: string | null;
       link: string | null;
     }
   | {
-      type: "code";
+      type: 'code';
       text: string | null;
       link: string | null;
       language: string | null;
     }
   | {
-      type: "bookmark";
+      type: 'bookmark';
       link: string | null;
       title: string | null;
       description: string | null;
@@ -161,88 +161,88 @@ export interface Equation {
 }
 
 type Language =
-  | "abap"
-  | "agda"
-  | "arduino"
-  | "assembly"
-  | "bash"
-  | "basic"
-  | "bnf"
-  | "c"
-  | "c#"
-  | "c++"
-  | "clojure"
-  | "coffeescript"
-  | "coq"
-  | "css"
-  | "dart"
-  | "dhall"
-  | "diff"
-  | "docker"
-  | "ebnf"
-  | "elixir"
-  | "elm"
-  | "erlang"
-  | "f#"
-  | "flow"
-  | "fortran"
-  | "gherkin"
-  | "glsl"
-  | "go"
-  | "graphql"
-  | "groovy"
-  | "haskell"
-  | "html"
-  | "idris"
-  | "java"
-  | "javascript"
-  | "json"
-  | "julia"
-  | "kotlin"
-  | "latex"
-  | "less"
-  | "lisp"
-  | "livescript"
-  | "llvm ir"
-  | "lua"
-  | "makefile"
-  | "markdown"
-  | "markup"
-  | "matlab"
-  | "mathematica"
-  | "mermaid"
-  | "nix"
-  | "objective-c"
-  | "ocaml"
-  | "pascal"
-  | "perl"
-  | "php"
-  | "plain text"
-  | "powershell"
-  | "prolog"
-  | "protobuf"
-  | "purescript"
-  | "python"
-  | "r"
-  | "racket"
-  | "reason"
-  | "ruby"
-  | "rust"
-  | "sass"
-  | "scala"
-  | "scheme"
-  | "scss"
-  | "shell"
-  | "solidity"
-  | "sql"
-  | "swift"
-  | "toml"
-  | "typescript"
-  | "vb.net"
-  | "verilog"
-  | "vhdl"
-  | "visual basic"
-  | "webassembly"
-  | "xml"
-  | "yaml"
-  | "java/c/c++/c#";
+  | 'abap'
+  | 'agda'
+  | 'arduino'
+  | 'assembly'
+  | 'bash'
+  | 'basic'
+  | 'bnf'
+  | 'c'
+  | 'c#'
+  | 'c++'
+  | 'clojure'
+  | 'coffeescript'
+  | 'coq'
+  | 'css'
+  | 'dart'
+  | 'dhall'
+  | 'diff'
+  | 'docker'
+  | 'ebnf'
+  | 'elixir'
+  | 'elm'
+  | 'erlang'
+  | 'f#'
+  | 'flow'
+  | 'fortran'
+  | 'gherkin'
+  | 'glsl'
+  | 'go'
+  | 'graphql'
+  | 'groovy'
+  | 'haskell'
+  | 'html'
+  | 'idris'
+  | 'java'
+  | 'javascript'
+  | 'json'
+  | 'julia'
+  | 'kotlin'
+  | 'latex'
+  | 'less'
+  | 'lisp'
+  | 'livescript'
+  | 'llvm ir'
+  | 'lua'
+  | 'makefile'
+  | 'markdown'
+  | 'markup'
+  | 'matlab'
+  | 'mathematica'
+  | 'mermaid'
+  | 'nix'
+  | 'objective-c'
+  | 'ocaml'
+  | 'pascal'
+  | 'perl'
+  | 'php'
+  | 'plain text'
+  | 'powershell'
+  | 'prolog'
+  | 'protobuf'
+  | 'purescript'
+  | 'python'
+  | 'r'
+  | 'racket'
+  | 'reason'
+  | 'ruby'
+  | 'rust'
+  | 'sass'
+  | 'scala'
+  | 'scheme'
+  | 'scss'
+  | 'shell'
+  | 'solidity'
+  | 'sql'
+  | 'swift'
+  | 'toml'
+  | 'typescript'
+  | 'vb.net'
+  | 'verilog'
+  | 'vhdl'
+  | 'visual basic'
+  | 'webassembly'
+  | 'xml'
+  | 'yaml'
+  | 'java/c/c++/c#';

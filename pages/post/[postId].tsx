@@ -1,11 +1,11 @@
-import { Layout } from "@/lib/component/Layout";
-import PostBlock from "@/lib/component/PostBlock";
-import { Block, Post } from "@/lib/interface";
-import { getAllBlocksById, getPostById, getPosts } from "@/lib/util/notion";
-import { wrapBlocks } from "@/lib/util/utils";
-import { error } from "console";
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import Error from "next/error";
+import { error } from 'console';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import Error from 'next/error';
+import { Layout } from '@/lib/component/Layout';
+import PostBlock from '@/lib/component/PostBlock';
+import { Block, Post } from '@/lib/interface';
+import { getAllBlocksById, getPostById, getPosts } from '@/lib/util/notion';
+import { wrapBlocks } from '@/lib/util/utils';
 
 type blocksProps = {
   blocks: Block[];
@@ -14,7 +14,7 @@ type blocksProps = {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const posts = await getPosts("7c948cdaef8b42138f248995ecd5e275");
+    const posts = await getPosts('7c948cdaef8b42138f248995ecd5e275');
     const params = {
       paths: posts.map((post) => {
         return {
@@ -35,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<blocksProps> = async ({
   params,
 }) => {
-  if (params !== undefined && typeof params.postId == "string") {
+  if (params !== undefined && typeof params.postId == 'string') {
     const postId = params.postId;
     const allBlocks = await getAllBlocksById(postId);
     const post = await getPostById(postId);

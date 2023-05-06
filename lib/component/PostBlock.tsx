@@ -1,4 +1,4 @@
-import { Block } from "../interface";
+import { Block } from '../interface';
 import {
   Bookmark,
   BulletedList,
@@ -9,27 +9,27 @@ import {
   ImageBlock,
   Paragraph,
   Quote,
-} from "./notion-blocks";
+} from './notion-blocks';
 
 const PostBlock = ({ block }: { block: Block }) => {
   switch (block.type) {
-    case "heading_1":
+    case 'heading_1':
       return <Heading1 block={block} />;
-    case "heading_2":
+    case 'heading_2':
       return <Heading2 block={block} />;
-    case "heading_3":
+    case 'heading_3':
       return <Heading3 block={block} />;
-    case "paragraph":
+    case 'paragraph':
       return <Paragraph block={block} />;
-    case "image":
+    case 'image':
       return <ImageBlock initialBlock={block} />;
-    case "quote":
+    case 'quote':
       return <Quote block={block} />;
-    case "code":
+    case 'code':
       return <Code block={block} />;
-    case "bookmark":
+    case 'bookmark':
       return <Bookmark block={block} />;
-    case "bulleted_list_item":
+    case 'bulleted_list_item':
       return <BulletedList block={block} />;
   }
   return <h2>{block.type}</h2>;

@@ -1,6 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import Link from 'next/link';
+import { useState } from 'react';
 
 export const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -45,7 +44,7 @@ export const Navbar = () => {
                 viewBox="0 0 16 16"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
                 />
               </svg>
@@ -63,8 +62,9 @@ export const Navbar = () => {
         </div>
         <div
           id="navbar-collapse-with-animation"
-          className={`ml-60 bg-white sm:bg-transparent shadow-sm hs-collapse transition-all ease-linear duration-300 basis-full grow sm:block ${openMenu ? "" : "hidden"
-            }`}
+          className={`ml-60 bg-white sm:bg-transparent shadow-sm hs-collapse transition-all ease-linear duration-300 basis-full grow sm:block ${
+            openMenu ? '' : 'hidden'
+          }`}
         >
           <div className="flex flex-col mt-3 gap-y-4 gap-x-0 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:pl-7">
             <Link

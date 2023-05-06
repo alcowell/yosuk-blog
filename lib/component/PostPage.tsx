@@ -1,6 +1,5 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { Post } from "../interface";
+import { useRouter } from 'next/router';
+import { Post } from '../interface';
 
 const PostPage: React.FunctionComponent<{ post: Post }> = ({ post }) => {
   const router = useRouter();
@@ -13,7 +12,7 @@ const PostPage: React.FunctionComponent<{ post: Post }> = ({ post }) => {
             <img
               className="rounded-md object-cover h-40 w-full md:h-40 md:w-40 hover:opacity-80"
               src={post.coverImageURL}
-              style={{ objectFit: "cover", overflow: "hidden" }}
+              style={{ objectFit: 'cover', overflow: 'hidden' }}
               alt="topic"
               height={200}
               width={200}
@@ -23,9 +22,9 @@ const PostPage: React.FunctionComponent<{ post: Post }> = ({ post }) => {
         <div className="px-2">
           <span className="md:text-lg text-sm text-gray-500">
             {date.getFullYear().toString() +
-              "/" +
+              '/' +
               (date.getMonth() + 1).toString() +
-              "/" +
+              '/' +
               date.getDate().toString()}
           </span>
           <p className="md:mt-3 mt-2 md:text-lg text-sm font-medium leading-6 font-noto">
@@ -43,7 +42,7 @@ const PostPage: React.FunctionComponent<{ post: Post }> = ({ post }) => {
             return (
               <span
                 className={
-                  "inline-block bg-gray-200 rounded-full px-3 py-1 md:text-sm text-xs font-semibold text-gray-700 mr-2 mb-2 mt-4"
+                  'inline-block bg-gray-200 rounded-full px-3 py-1 md:text-sm text-xs font-semibold text-gray-700 mr-2 mb-2 mt-4'
                 }
                 key={i}
               >

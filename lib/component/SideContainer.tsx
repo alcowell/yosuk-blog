@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { AiFillFacebook, AiFillGithub, AiFillInstagram } from "react-icons/ai";
+import { AiFillFacebook, AiFillGithub, AiFillInstagram } from 'react-icons/ai';
 
 export const SideContainer2 = () => {
   return (

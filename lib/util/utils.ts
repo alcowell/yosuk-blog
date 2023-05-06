@@ -1,11 +1,11 @@
-import { Block, List } from "../interface";
+import { Block, List } from '../interface';
 
 export function wrapBlocks(blocks: Block[]): Block[] {
   return blocks.reduce((arr, block: Block, i: number) => {
     if (block?.bulleted_list_item !== undefined) {
       if (i === 0) {
         const list: List = {
-          type: "bulleted_list_item",
+          type: 'bulleted_list_item',
           listItems: [block.bulleted_list_item],
         };
         block.list = list;
@@ -14,9 +14,9 @@ export function wrapBlocks(blocks: Block[]): Block[] {
 
       const prevBlock = arr[arr.length - 1];
 
-      if (prevBlock.type !== "bulleted_list_item") {
+      if (prevBlock.type !== 'bulleted_list_item') {
         const list: List = {
-          type: "bulleted_list_item",
+          type: 'bulleted_list_item',
           listItems: [block.bulleted_list_item],
         };
         block.list = list;

@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Prism from "prismjs";
-import { useEffect } from "react";
-import useSWR from "swr";
-import { Block, BulletedListItem, RichText } from "../interface";
-import { fetchBlock, isExpired } from "../util/notion";
+import Image from 'next/image';
+import Prism from 'prismjs';
+import { useEffect } from 'react';
+import useSWR from 'swr';
+import { Block, BulletedListItem, RichText } from '../interface';
+import { fetchBlock, isExpired } from '../util/notion';
 
 export const RichTextContent = ({
   richText,
@@ -32,13 +32,13 @@ export const RichTextContent = ({
 
   let element;
 
-  if (richText.type == "text") {
+  if (richText.type == 'text') {
     if (richText.href) {
-      className = className.replace(/text-gray-800/g, "");
-      className += " font-medium text-blue-600 hover:underline";
+      className = className.replace(/text-gray-800/g, '');
+      className += ' font-medium text-blue-600 hover:underline';
     }
     element = <p className={className}>{richText.text?.content}</p>;
-  } else if (richText.type == "equation") {
+  } else if (richText.type == 'equation') {
     element = <p className={className}>{richText.equation?.expression}</p>;
   } else {
     element = null;
@@ -56,7 +56,7 @@ export const RichTextContent = ({
   if (richText.annotations.underline) {
     element = <u>{element}</u>;
   }
-  if (richText.annotations.color && richText.annotations.color !== "default") {
+  if (richText.annotations.color && richText.annotations.color !== 'default') {
     element = (
       <span className={`text-${richText.annotations.color}`}>{element}</span>
     );
@@ -69,8 +69,8 @@ export const RichTextContent = ({
 };
 
 export const Heading1 = ({ block }: { block: Block }) => {
-  let className =
-    "md:text-4xl text-2xl font-noto text-gray-800 font-bold md:pt-5 pt-3 pb-3 md:pb-2";
+  const className =
+    'md:text-4xl text-2xl font-noto text-gray-800 font-bold md:pt-5 pt-3 pb-3 md:pb-2';
   return (
     <>
       {block.heading_1?.rich_text.map((rich_text: RichText, i: number) => (
@@ -81,7 +81,7 @@ export const Heading1 = ({ block }: { block: Block }) => {
 };
 
 export const Heading2 = ({ block }: { block: Block }) => {
-  let className = "md:text-3xl text-xl font-noto font-bold";
+  const className = 'md:text-3xl text-xl font-noto font-bold';
   return (
     <>
       {block.heading_2?.rich_text.map((rich_text: RichText, i: number) => (
@@ -92,7 +92,7 @@ export const Heading2 = ({ block }: { block: Block }) => {
 };
 
 export const Heading3 = ({ block }: { block: Block }) => {
-  let className = "md:text-2xl text-lg font-noto font-bold";
+  const className = 'md:text-2xl text-lg font-noto font-bold';
   return (
     <>
       {block.heading_3?.rich_text.map((rich_text: RichText, i: number) => (
@@ -103,8 +103,8 @@ export const Heading3 = ({ block }: { block: Block }) => {
 };
 
 export const Paragraph = ({ block }: { block: Block }) => {
-  let className =
-    "md:text-xl text-base font-noto text-gray-800 leading-relaxed md:leading-relaxed inline";
+  const className =
+    'md:text-xl text-base font-noto text-gray-800 leading-relaxed md:leading-relaxed inline';
   return (
     <div className="pt-2">
       {block.paragraph?.rich_text.map((rich_text: RichText, i: number) => (
@@ -123,12 +123,12 @@ export const ImageBlock = ({ initialBlock }: { initialBlock: Block }) => {
     }
   );
 
-  let url = "";
-  if (block.image?.type == "file") {
-    url = block.image.file?.url !== undefined ? block.image.file?.url : "";
-  } else if (block.image?.type == "external") {
+  let url = '';
+  if (block.image?.type == 'file') {
+    url = block.image.file?.url !== undefined ? block.image.file?.url : '';
+  } else if (block.image?.type == 'external') {
     url =
-      block.image.external?.url !== undefined ? block.image.external.url : "";
+      block.image.external?.url !== undefined ? block.image.external.url : '';
   }
   return (
     <div className="justify-center items-center flex w-full">
@@ -138,7 +138,8 @@ export const ImageBlock = ({ initialBlock }: { initialBlock: Block }) => {
 };
 
 export const Quote = ({ block }: { block: Block }) => {
-  let className = "md:text-xl italic font-medium leading-relaxed text-gray-700";
+  const className =
+    'md:text-xl italic font-medium leading-relaxed text-gray-700';
   return (
     <blockquote className="p-4 my-4 border-l-4 border-gray-300 bg-gray-50">
       {block.quote?.rich_text.map((rich_text: RichText, i: number) => (
@@ -152,7 +153,7 @@ export const Code = ({ block }: { block: Block }) => {
   useEffect(() => {
     Prism.highlightAll();
   });
-  const className = "";
+  const className = '';
   const language = block.code?.language;
 
   return (
@@ -195,7 +196,7 @@ export const Bookmark = ({ block }: { block: Block }) => {
           </div>
         </div>
         <div className="relative col-span-1 flex-shrink-0 overflow-hidden px-1">
-          {ogpImage !== "" && ogpImage !== undefined ? (
+          {ogpImage !== '' && ogpImage !== undefined ? (
             <Image
               className="absolute top-0 h-full w-full object-cover"
               src={ogpImage}
@@ -213,7 +214,7 @@ export const Bookmark = ({ block }: { block: Block }) => {
 
 export const BulletedList = ({ block }: { block: Block }) => {
   const className =
-    "md:text-xl text-base font-noto text-gray-800 leading-relaxed md:leading-relaxed inline";
+    'md:text-xl text-base font-noto text-gray-800 leading-relaxed md:leading-relaxed inline';
 
   return (
     <ul className="list-disc list-inside text-gray-900">
